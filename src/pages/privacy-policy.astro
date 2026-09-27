@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Privacy Policy — Verbify" description="How Verbify handles your data. The short version: we don't collect your resume text.">
+  <article class="legal">
+    <header>
+      <h1 data-i18n="legal.privacy">Privacy Policy</h1>
+      <p class="updated"><span data-i18n="legal.updatedLabel">Last updated</span>: 2026-09-25</p>
+    </header>
+    <h2 data-i18n="legal.privacyCollectTitle">What we don't collect</h2>
+    <p data-i18n="legal.privacyCollectBody">Verbify is a browser-based tool. The resume text and job description you paste into the Resume Reviewer are processed locally in your browser. They are not uploaded to our servers, not stored by us, and not shared with any third party.</p>
+    <h2 data-i18n="legal.privacyAnalyticsTitle">Analytics</h2>
+    <p data-i18n="legal.privacyAnalyticsBody">We use privacy-respecting analytics to understand aggregate usage (which pages are visited, in what country). We do not track individual users, and we do not combine analytics data with any personally identifiable information.</p>
+    <h2 data-i18n="legal.privacyCookiesTitle">Cookies</h2>
+    <p data-i18n="legal.privacyCookiesBody">Verbify itself does not set tracking cookies. Third-party services such as advertising partners may set their own cookies; see those providers' policies for details.</p>
+    <h2 data-i18n="legal.adsTitle">Advertising (Google AdSense)</h2>
+    <p data-i18n="legal.adsIntro">This website uses Google AdSense to display advertisements. Google AdSense is an advertising service operated by Google LLC ("Google"). Google and its advertising partners may use cookies, web beacons and similar technologies to serve ads based on your prior visits to this website or other sites, and to personalize advertising. This means personal data (cookies and device signals) is shared with Google as a third party.</p>
+    <ul>
+      <li data-i18n="legal.adsBullet1">AdSense stores and reads cookies on your device to serve, personalize and measure ads.</li>
+      <li data-i18n="legal.adsBullet2">You can disable personalized advertising at any time via Google Ads Settings (https://www.google.com/settings/ads) or YourAdChoices (https://www.youradchoices.com/).</li>
+      <li data-i18n="legal.adsBullet3">We do not sell personal data. The advertising cookies are set by Google, not by us, and are loaded only after you grant consent where required.</li>
+    </ul>
+    <h2 data-i18n="legal.privacyLinksTitle">External links</h2>
+    <p data-i18n="legal.privacyLinksBody">This site links to external resources. We are not responsible for the content or privacy practices of those sites.</p>
+    <h2 data-i18n="legal.privacyContactTitle">Contact</h2>
+    <p data-i18n="legal.privacyContactBody">If you have any questions about this policy, contact us via the details published on the About page.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal { max-width: 45rem; margin: 0 auto; }
+  header { padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  h1 { margin: 0 0 .5rem; }
+  .updated { color: #94a3b8; font-size: .85rem; margin: 0; }
+  h2 { margin-top: 2rem; font-size: 1.15rem; }
+  p { color: var(--color-muted); }
+</style>

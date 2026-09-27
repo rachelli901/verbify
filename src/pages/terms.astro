@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Terms — Verbify" description="Terms of use for Verbify.">
+  <article class="legal">
+    <header><h1 data-i18n="legal.terms">Terms of Use</h1></header>
+    <h2 data-i18n="legal.termsAcceptanceTitle">Acceptance</h2>
+    <p data-i18n="legal.termsAcceptanceBody">By using Verbify, you agree to these terms. If you do not agree, do not use the service.</p>
+    <h2 data-i18n="legal.termsServiceTitle">The service</h2>
+    <p data-i18n="legal.termsServiceBody">Verbify provides a browser-based resume review tool and educational guides. Suggestions are generated from a reviewed rule library and are for reference only.</p>
+    <h2 data-i18n="legal.termsGuaranteeTitle">No guarantee</h2>
+    <p data-i18n="legal.termsGuaranteeBody">Verbify does not guarantee any employment outcome, interview, offer or result. Hiring decisions are made by employers.</p>
+    <h2 data-i18n="legal.termsContentTitle">Your content</h2>
+    <p data-i18n="legal.termsContentBody">You retain all rights to the content you paste into the tool. Because processing happens in your browser, we do not receive or store it.</p>
+    <h2 data-i18n="legal.termsLiabilityTitle">Liability</h2>
+    <p data-i18n="legal.termsLiabilityBody">Verbify is provided "as is". To the fullest extent permitted by law, we are not liable for any direct or indirect loss arising from the use of this service.</p>
+    <h2 data-i18n="legal.termsChangesTitle">Changes</h2>
+    <p data-i18n="legal.termsChangesBody">We may update these terms from time to time. Continued use after changes constitutes acceptance.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal { max-width: 45rem; margin: 0 auto; }
+  header { padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  h2 { margin-top: 2rem; font-size: 1.15rem; }
+  p { color: var(--color-muted); }
+</style>

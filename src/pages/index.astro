@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Verbify — Turn Chinese resume verbs into English action verbs">
+  <section class="hero">
+    <h1 data-i18n="home.title">Turn Chinese resume verbs into English action verbs.</h1>
+    <p class="lede" data-i18n="home.subtitle">
+      Verbify reviews your resume in the browser and suggests stronger English action verbs. No AI generation, no sign-up, no file upload.
+    </p>
+    <div class="pillars">
+      <span class="pill" data-i18n="home.feature1Title">✓ Free, forever</span>
+      <span class="pill" data-i18n="home.feature2Title">✓ Browser-only — nothing uploaded</span>
+      <span class="pill" data-i18n="home.feature3Title">✓ No AI, no sign-up</span>
+    </div>
+    <a class="cta" href="/tools/resume-reviewer"><span data-i18n="home.cta">Try the Resume Reviewer</span> →</a>
+  </section>
+
+  <section class="how">
+    <h2 data-i18n="home.howItWorks">How it works</h2>
+    <ol class="steps">
+      <li>
+        <strong data-i18n="home.step1Title">Paste your resume</strong>
+        <p data-i18n="home.step1Desc">Drop in your resume text. Everything stays in your browser.</p>
+      </li>
+      <li>
+        <strong data-i18n="home.step2Title">Get verb suggestions</strong>
+        <p data-i18n="home.step2Desc">See which verbs can be stronger and why each suggestion fits.</p>
+      </li>
+      <li>
+        <strong data-i18n="home.step3Title">Check keyword gaps</strong>
+        <p data-i18n="home.step3Desc">Compare your resume against the job description keywords.</p>
+      </li>
+      <li>
+        <strong data-i18n="home.step4Title">Spot sensitive fields</strong>
+        <p data-i18n="home.step4Desc">Flags items like age, photo, or marital status that some markets avoid.</p>
+      </li>
+      <li>
+        <strong data-i18n="home.step5Title">Export your checklist</strong>
+        <p data-i18n="home.step5Desc">Download a CSV of suggestions to work through offline.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="difference">
+    <h2 data-i18n="home.explainTitle">Why "explain" instead of "generate"</h2>
+    <p data-i18n="home.explainDesc">
+      Most resume tools hand you a score and a rewritten sentence — and leave you wondering whether the rewrite is even accurate for your actual role. Verbify tells you why a verb fits, when to use it, and when not to — so you stay in control of the final wording.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding: 2rem 0 3rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin: 0 0 1rem; letter-spacing: -0.02em; }
+  .hl { color: var(--color-brand); }
+  .lede { font-size: 1.15rem; color: var(--color-muted); max-width: 40rem; margin: 0 0 1.5rem; }
+  .pillars { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+  .pill { background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: 999px; padding: .4rem .9rem; font-size: .85rem; color: var(--color-muted); }
+  .cta {
+    display: inline-block; background: var(--color-brand); color: #fff; text-decoration: none;
+    padding: .85rem 1.75rem; border-radius: 8px; font-weight: 600; font-size: 1rem;
+  }
+  .cta:hover { background: #1d4ed8; }
+  .how { padding: 2rem 0; border-top: 1px solid var(--color-border); }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; }
+  .steps li { background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: 8px; padding: 1rem 1.25rem; }
+  .steps strong { color: var(--color-brand); }
+  .steps p { margin: .35rem 0 0; color: var(--color-muted); font-size: .95rem; }
+  .difference { padding: 2rem 0; border-top: 1px solid var(--color-border); }
+  .difference p { font-size: 1.05rem; }
+  .muted { color: var(--color-muted); font-size: .9rem !important; }
+</style>

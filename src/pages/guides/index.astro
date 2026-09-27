@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const guides = await getCollection('guides');
+---
+<BaseLayout title="Guides — Verbify" description="Practical guides for writing an English resume as a non-native speaker.">
+  <header class="page-head">
+    <h1 data-i18n="guides.pageTitle">Guides</h1>
+    <p data-i18n="guides.pageSubtitle">Practical writing guidance for non-native English speakers preparing an English resume for roles in Singapore, Malaysia, Indonesia and beyond.</p>
+  </header>
+  <ul class="guide-list">
+    {guides.map((g) => (
+      <li>
+        <a href={`/guides/${g.id.replace(/\.md$/, '')}`}>
+          <h2>{g.data.title}</h2>
+          <p>{g.data.description}</p>
+          <small>Reviewed: {g.data.lastReviewed} · Evidence: {g.data.evidenceGrade}</small>
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .page-head { padding-bottom: 2rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  .page-head h1 { margin: 0 0 .5rem; }
+  .page-head p { color: var(--color-muted); margin: 0; }
+  .guide-list { list-style: none; padding: 0; margin: 0; }
+  .guide-list li { border-bottom: 1px solid var(--color-border); }
+  .guide-list a { display: block; padding: 1.25rem 0; text-decoration: none; color: inherit; }
+  .guide-list a:hover h2 { color: var(--color-brand); }
+  .guide-list h2 { margin: 0 0 .35rem; font-size: 1.2rem; }
+  .guide-list p { margin: 0 0 .5rem; color: var(--color-muted); }
+  .guide-list small { color: #94a3b8; font-size: .8rem; }
+</style>

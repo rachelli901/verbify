@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+// TODO: 部署到真实域名后把下面邮箱换成真实地址（当前为占位，AdSense 要求联系入口真实可达）
+const email = 'hello@verbify.example';
+---
+<BaseLayout title="Contact — Verbify" description="Get in touch with the Verbify team by email.">
+  <article class="contact">
+    <header><h1 data-i18n="contact.title">Contact</h1></header>
+    <p class="subtitle" data-i18n="contact.subtitle">Questions, corrections, or partnership ideas — reach us by email.</p>
+    <p data-i18n="contact.intro">Verbify is run by a small independent team. We read every message, though we may not reply to each one individually.</p>
+    <div class="email-box">
+      <span class="label" data-i18n="contact.emailLabel">Email</span>
+      <a href={`mailto:${email}`} class="email">{email}</a>
+    </div>
+    <p class="note" data-i18n="contact.responseNote">We aim to reply within a few business days.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .contact { max-width: 45rem; margin: 0 auto; }
+  header { padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  .subtitle { color: var(--color-muted); font-size: 1.05rem; margin-top: -.5rem; }
+  .email-box {
+    display: flex; align-items: center; gap: 1rem; margin: 2rem 0 1rem;
+    padding: 1.25rem 1.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+  }
+  .label { font-size: .8rem; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
+  .email { font-size: 1.1rem; font-weight: 600; color: #2563eb; text-decoration: none; }
+  .email:hover { text-decoration: underline; }
+  .note { color: var(--color-muted); font-size: .9rem; }
+</style>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/ads/AdSlot.astro';
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({
+    params: { slug: guide.id.replace(/\.md$/, '') },
+    props: { guide },
+  }));
+}) satisfies GetStaticPaths;
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+const { title, description, applicableCountries, lastReviewed, reviewer, evidenceGrade, disclaimer } = guide.data;
+const slotContent = import.meta.env.PUBLIC_ADSENSE_SLOT_CONTENT as string | undefined;
+---
+<BaseLayout title={`${title} — Verbify`} description={description}>
+  <article class="guide">
+    <header>
+      <h1>{title}</h1>
+      <p class="description">{description}</p>
+      <dl class="meta">
+        <div><dt data-i18n="guide.applicableCountries">Applicable countries</dt><dd>{applicableCountries.join(', ')}</dd></div>
+        <div><dt data-i18n="guide.lastReviewed">Last reviewed</dt><dd>{lastReviewed}</dd></div>
+        <div><dt data-i18n="guide.reviewer">Reviewer</dt><dd>{reviewer}</dd></div>
+        <div><dt data-i18n="guide.evidenceGrade">Evidence grade</dt><dd>{evidenceGrade}</dd></div>
+      </dl>
+    </header>
+    <div class="body">
+      <Content />
+    </div>
+    <AdSlot slot={slotContent} />
+    <aside class="callout">
+      <h2 data-i18n="guide.tryIt">Try it</h2>
+      <p>Paste your resume into the <a href="/tools/resume-reviewer" data-i18n="nav.resumeReviewer">Resume Reviewer</a> to get verb suggestions, keyword gaps and sensitive-field checks — with explanations.</p>
+    </aside>
+    <footer class="disclaimer-box">
+      <p><strong data-i18n="guide.disclaimer">Disclaimer</strong>: {disclaimer}</p>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .guide { max-width: 45rem; margin: 0 auto; }
+  header { padding-bottom: 2rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  h1 { margin: 0 0 1rem; font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.02em; }
+  .description { color: var(--color-muted); font-size: 1.1rem; margin: 0; }
+  .meta { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 2rem; margin: 1.5rem 0 0; }
+  .meta div { border-top: 1px solid var(--color-border); padding-top: .5rem; }
+  .meta dt { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #94a3b8; margin: 0; }
+  .meta dd { margin: .15rem 0 0; font-size: .9rem; }
+  .body :global(h2) { margin-top: 2.25rem; font-size: 1.3rem; }
+  .body :global(h3) { margin-top: 1.75rem; }
+  .body :global(p) { margin: 1rem 0; }
+  .body :global(ul), .body :global(ol) { padding-left: 1.5rem; }
+  .body :global(li) { margin-bottom: .5rem; }
+  .body :global(table) { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: .9rem; }
+  .body :global(th), .body :global(td) { border: 1px solid var(--color-border); padding: .5rem .75rem; text-align: left; }
+  .body :global(th) { background: var(--color-bg-soft); }
+  .callout {
+    background: var(--color-bg-soft); border: 1px solid var(--color-border); border-radius: 8px;
+    padding: 1.25rem 1.5rem; margin: 2.5rem 0;
+  }
+  .callout h2 { margin: 0 0 .5rem; font-size: 1.05rem; }
+  .callout p { margin: 0; }
+  .disclaimer-box { border-top: 1px solid var(--color-border); padding-top: 1.5rem; margin-top: 2rem; }
+  .disclaimer-box p { color: var(--color-muted); font-size: .85rem; margin: 0; }
+</style>

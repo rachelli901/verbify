@@ -1,0 +1,130 @@
+---
+// Cookie 同意横幅。
+// 在访客做出选择前显示；选择结果存入 localStorage。
+// 广告脚本（AdSense）必须仅在 consent === 'granted' 之后注入，
+// 见下方 grant() 中的 gated loader 注释。
+---
+<div id="cookie-consent" class="cookie-consent" hidden>
+  <div class="cookie-inner">
+    <p class="cookie-text">
+      <strong data-i18n="cookie.title">We use cookies</strong>
+      <span data-i18n="cookie.body">We use cookies to serve ads (Google AdSense) and measure site usage. You can accept or reject non-essential cookies. Essential site functionality does not require cookies.</span>
+    </p>
+    <div class="cookie-actions">
+      <button id="cookie-reject" type="button" data-i18n="cookie.reject">Reject</button>
+      <button id="cookie-accept" type="button" data-i18n="cookie.accept">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const KEY = 'verbify-consent';
+  const banner = document.getElementById('cookie-consent');
+  const accept = document.getElementById('cookie-accept');
+  const reject = document.getElementById('cookie-reject');
+
+  function hide() {
+    if (banner) banner.hidden = true;
+  }
+
+  function grant() {
+    try {
+      localStorage.setItem(KEY, 'granted');
+    } catch {
+      /* storage unavailable — treat as granted for UX */
+    }
+    hide();
+    document.dispatchEvent(new CustomEvent('verbify:consent-granted'));
+    // AdSense 由 BaseLayout 监听 verbify:consent-granted 后加载（见 src/lib/adsense.ts）。
+    // 此处仅派发事件；发布商 ID 从 .env 的 PUBLIC_ADSENSE_CLIENT_ID 读取，零硬编码。
+  }
+
+  function deny() {
+    try {
+      localStorage.setItem(KEY, 'denied');
+    } catch {
+      /* ignore */
+    }
+    hide();
+    document.dispatchEvent(new CustomEvent('verbify:consent-denied'));
+  }
+
+  let choice: string | null = null;
+  try {
+    choice = localStorage.getItem(KEY);
+  } catch {
+    choice = null;
+  }
+
+  if (choice === 'granted' || choice === 'denied') {
+    hide();
+    if (choice === 'granted') {
+      document.dispatchEvent(new CustomEvent('verbify:consent-granted'));
+    }
+  } else if (banner) {
+    banner.hidden = false;
+  }
+
+  accept?.addEventListener('click', grant);
+  reject?.addEventListener('click', deny);
+</script>
+
+<style>
+  .cookie-consent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 0.85rem 1rem;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.18);
+  }
+  .cookie-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .cookie-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .cookie-text strong {
+    display: block;
+    margin-bottom: 0.15rem;
+    color: #fff;
+  }
+  .cookie-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .cookie-actions button {
+    border: 1px solid #475569;
+    background: transparent;
+    color: #e2e8f0;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  #cookie-accept {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+  }
+  .cookie-actions button:hover {
+    opacity: 0.9;
+  }
+  @media (max-width: 640px) {
+    .cookie-inner {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

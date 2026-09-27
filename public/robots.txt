@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# 工具页允许抓取（纯客户端交互，内容由静态页承载）
+Allow: /tools/
+
+# API / 内部端点禁止抓取
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://verbify.example.com/sitemap-index.xml

@@ -1,0 +1,77 @@
+---
+import LanguageSwitcher from '../LanguageSwitcher.vue';
+import { getStoredLocale } from '../../lib/i18n/init';
+import { getStrings } from '../../lib/i18n/strings';
+import type { Locale } from '../../lib/i18n/strings';
+
+const locale: Locale = getStoredLocale();
+const t = getStrings(locale);
+const navItems = [
+  { href: '/', key: 'home' as const },
+  { href: '/guides/', key: 'guides' as const },
+  { href: '/tools/resume-reviewer', key: 'resumeReviewer' as const },
+  { href: '/examples/', key: 'examples' as const },
+  { href: '/contact/', key: 'contact' as const },
+];
+---
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <span class="logo">V</span>
+      <span class="brand-name">Verbify</span>
+    </a>
+    <div class="header-right">
+      <nav aria-label="Primary">
+        <ul>
+          {navItems.map((item) => (
+            <li><a href={item.href} data-i18n={`nav.${item.key}`}>{t.nav[item.key]}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <LanguageSwitcher client:load initial={locale} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid #e2e8f0;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 1rem;
+  }
+  .brand { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+  .logo {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: #2563eb; color: #fff; display: grid; place-items: center;
+    font-weight: 700; font-size: 1.1rem;
+  }
+  .brand-name { font-weight: 700; font-size: 1.25rem; color: #0f172a; }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .header-right nav { display: block; }
+  nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  nav a {
+    color: #475569; text-decoration: none; font-size: .95rem; font-weight: 500;
+  }
+  nav a:hover { color: #2563eb; }
+  @media (max-width: 640px) {
+    nav ul { gap: .75rem; }
+    nav a { font-size: .85rem; }
+    .header-right { gap: .65rem; }
+  }
+</style>

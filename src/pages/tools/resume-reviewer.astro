@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResumeReviewer from '../../components/tools/ResumeReviewer.vue';
+---
+<BaseLayout title="Resume Reviewer — Verbify" description="Free browser-only resume reviewer. Get verb suggestions, keyword gaps and sensitive-field checks with explanations.">
+  <section class="tool-header">
+    <h1 data-i18n="reviewer.pageTitle">Resume Reviewer</h1>
+    <p data-i18n="reviewer.pageSubtitle">Review your resume for stronger verbs, JD keyword gaps and sensitive fields. All processing happens in your browser — nothing is uploaded or stored, and no AI is involved.</p>
+  </section>
+  <ResumeReviewer client:load />
+  <section class="notes">
+    <h2 data-i18n="reviewer.notesTitle">What this tool does — and doesn't do</h2>
+    <ul>
+      <li><strong data-i18n="reviewer.doesLabel">Does</strong>: <span data-i18n="reviewer.note1">Suggest English action verbs for Chinese verbs, based on a reviewed rule library.</span></li>
+      <li><strong data-i18n="reviewer.doesLabel">Does</strong>: <span data-i18n="reviewer.note2">Extract keywords from a JD and show what is missing from your resume.</span></li>
+      <li><strong data-i18n="reviewer.doesLabel">Does</strong>: <span data-i18n="reviewer.note3">Flag sensitive fields (age, photo, ID numbers) that usually do not belong on an English resume.</span></li>
+      <li><strong data-i18n="reviewer.doesNotLabel">Does not</strong>: <span data-i18n="reviewer.note4">Generate your resume for you, or write any English text automatically.</span></li>
+      <li><strong data-i18n="reviewer.doesNotLabel">Does not</strong>: <span data-i18n="reviewer.note5">Give an ATS pass rate or any guarantee of interview outcomes.</span></li>
+      <li><strong data-i18n="reviewer.doesNotLabel">Does not</strong>: <span data-i18n="reviewer.note6">Collect, store or transmit your resume text.</span></li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-header { padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  .tool-header h1 { margin: 0 0 .5rem; }
+  .tool-header p { color: var(--color-muted); margin: 0; max-width: 45rem; }
+  .notes { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border); }
+  .notes h2 { font-size: 1.1rem; }
+  .notes ul { padding-left: 1.25rem; }
+  .notes li { margin-bottom: .65rem; }
+  .notes strong { color: var(--color-text); }
+</style>

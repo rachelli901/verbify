@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found — Verbify" description="The page you're looking for doesn't exist.">
+  <div class="not-found">
+    <h1>404</h1>
+    <p data-i18n="notFound.desc">The page you're looking for doesn't exist.</p>
+    <a href="/"><span data-i18n="notFound.home">← Back to home</span></a>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found { text-align: center; padding: 4rem 0; }
+  h1 { font-size: 4rem; color: var(--color-brand); margin: 0 0 1rem; }
+  p { color: var(--color-muted); margin: 0 0 1.5rem; }
+</style>

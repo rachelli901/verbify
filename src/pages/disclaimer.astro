@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Disclaimer — Verbify" description="What Verbify is and isn't.">
+  <article class="legal">
+    <header><h1 data-i18n="legal.disclaimer">Disclaimer</h1></header>
+    <p data-i18n="legal.disclaimerIntroBody">Verbify provides resume review suggestions and educational writing guidance for general informational purposes only.</p>
+    <h2 data-i18n="legal.disclaimerAdviceTitle">Not professional advice</h2>
+    <p data-i18n="legal.disclaimerAdviceBody">Verbify is not a substitute for career counselling, legal advice, immigration advice or visa advice. For immigration, visa or work-authorisation questions, consult the relevant official authority or a qualified professional.</p>
+    <h2 data-i18n="legal.disclaimerAccuracyTitle">Accuracy</h2>
+    <p data-i18n="legal.disclaimerAccuracyBody">While we maintain a reviewed rule library, conventions vary by country, industry and employer. Always verify role-specific norms with your target employer.</p>
+    <h2 data-i18n="legal.disclaimerDecisionTitle">Your decision</h2>
+    <p data-i18n="legal.disclaimerDecisionBody">All final content decisions about your resume are yours. Verbify does not generate or auto-submit resumes on your behalf.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal { max-width: 45rem; margin: 0 auto; }
+  header { padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  h2 { margin-top: 2rem; font-size: 1.15rem; }
+  p { color: var(--color-muted); }
+</style>

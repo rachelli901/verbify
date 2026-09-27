@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About — Verbify" description="What Verbify is and why it explains instead of generating.">
+  <article class="about">
+    <header><h1 data-i18n="about.title">About Verbify</h1></header>
+    <p data-i18n="about.intro">Verbify is a free, browser-only resume review tool for non-native English speakers — especially applicants from China and Southeast Asia preparing resumes for roles in Singapore, Malaysia, Indonesia and beyond.</p>
+    <h2 data-i18n="about.whyTitle">Why we built it</h2>
+    <p data-i18n="about.whyBody">Auto-generated resume text can overstate, understate or simply get it wrong. Verbify gives you suggestions and explanations; you make the final call. Your resume stays yours.</p>
+    <h2 data-i18n="about.privacyTitle">Your data never leaves the device</h2>
+    <p data-i18n="about.privacyBody">All processing happens in your browser. Your resume text never leaves your device, and we don't use AI to write your resume.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .about { max-width: 45rem; margin: 0 auto; }
+  header { padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 2rem; }
+  h2 { margin-top: 2rem; font-size: 1.15rem; }
+  p { color: var(--color-muted); }
+</style>

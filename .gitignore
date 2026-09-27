@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.astro/
+docs/
+
+# environment (keep .env.example tracked)
+.env
+.env.production
+.env.local
+.env.*.local
+
+# logs
+*.log
+npm-debug.log*
